@@ -12,6 +12,7 @@ The square root part is called the "discriminant".
 Assignments:
 ##### x03. Determine if the quadratic can be factored
 '''
+import math
 import x01_discriminant
 
 def factorable(a,b,c):
@@ -21,28 +22,42 @@ def factorable(a,b,c):
   a, b, c : signed float
   
   Alternately, you can make use of the previously calculated discriminant and use that instead by changing your function definition to:
-def factorable(discriminant):
+  def factorable(discriminant):
 
   Return Value:
   boolean:
     True - can be factored
     False - can not be factored
   '''
+  num = float(b**2-(4*a*c))
+
+  if num > 0:
+    num = num ** (1/2)
+    if num.is_integer():
+      return True
+    else:
+      return False
+  elif num == 0:
+    return True
+  else: 
+    return False
+
+
   
-  return None
+ 
 
 def main():
   #uncomment the lines that match your assignment
-  #assert factorable(1,4,4) == True
+  assert factorable(1,4,4) == True
   #assert factorable(0) == True
   
-  #assert factorable(1,-1,-6) == True
+  assert factorable(1,-1,-6) == True
   #assert factorable(25) == True
   
-  #assert factorable(2,3,8) == False
+  assert factorable(2,3,8) == False
   #assert factorable(-55) == False
   
-  #assert factorable(1,3,7) == False
+  assert factorable(1,3,7) == False
   #assert factorable(5) == False
   
 if __name__ == "__main__":
